@@ -32,6 +32,13 @@ app.config( ['$routeProvider',function( $routeProvider)
         templateUrl: 'view/vwListeDePersonnes.html'
         });
         
+    // Route pour accéder à la vue d'une personne vwUnePersonne.html à partir d'un 
+    // lien hypertext sur la liste
+    $routeProvider.when( '/list/personne/:personneId', {
+        templateUrl: 'view/vwUnePersonne.html',
+        controller: 'PersonneController' });
+        
+        
     $routeProvider.otherwise( {redirectTo: '/list'} ) ;
 }]);
 
