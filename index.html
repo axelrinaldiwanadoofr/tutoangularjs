@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="MonApp">
+    <head>
+        <title>Personnels</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <link href="css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <article ng-controller="PersonneController">
+            <h3>Voici une personne</h3>
+            <p>
+                Identifiant: <strong>{{personne.id}}</strong>
+                <br>
+                Nom: <strong>{{personne.nom}}</strong>
+                <br>
+                Prénom: <strong>{{personne.prenom}}</strong>
+            </p>
+            <h3>Formulaire de mise à jour de cette personne</h3>
+            <p>
+                <strong>Formulaire</strong><br>
+                Nom: 
+                <input ng-model="personne.nom"/><br>
+                Prénom: 
+                <input ng-model="personne.prenom"/><br>
+            </p>
+        </article>
+        <script src="js/lib/angular.min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
