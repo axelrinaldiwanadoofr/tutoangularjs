@@ -60,4 +60,19 @@ app.controller( "PersonneController", ["$scope",function( $scope )
     ];
 }]);
 
+/*
+ * Création du controleur de donnée "PersonneController" qui crée un modèle de données
+ * pour une personne dans le scope. Ce controlleur récupère par injection la référence de l'objet contenu
+ * dans la variable $routeParams définie dans le module "ngRoute" de AngularJS en plus de la référence au scope. 
+ * Cet objet contient les paramètres transmis par le lien hyper-text "détail", ici l'identifiant de la personne.
+ * 
+ *  Le controlleur ajoute au scope l'attribut "personne" dans lequel elle copie la référence de l'objet contenant
+ *  les données de la personne sur laquelle l'utilisateur a cliquée.  
+ */
+app.controller( "PersonneController", ["$scope","$routeParams",function($scope, $routeParams)
+{
+    // Ajoute au nouveau scope fils l'attribut "personne" avec la référence de la personne
+    // stockée dans la case du tableau "lesPersonnes" sélectionnée
+    $scope.personne = $scope.lesPersonnes[$routeParams.personneId-1] ;
+}]);
 
