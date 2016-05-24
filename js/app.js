@@ -29,8 +29,12 @@ var app = angular.module( 'MonApp', [] ) ;
  *  "id" qui contient l'identifiant de la personne, "nom" qui contient le nom de la personne et "prenom" 
  *  qui contient le prénom de la personne.
  *  
+<<<<<<< HEAD
  *   Ajout du champ dateNaissance référencant un objet contenant les données d'une date de naissance.
  *   Ce dernier est constitué des champs jour, mois et annee   
+=======
+ *  Ajout du champ booleen "masculin"
+>>>>>>> v1.1_ajout_champ_sexe
  *    
  */
 app.controller( "PersonneController", function( $scope )
@@ -43,7 +47,8 @@ app.controller( "PersonneController", function( $scope )
             jour: 10,
             mois: 2,
             annee: 1995
-        }        
+        },        
+        masculin: true 
     } ;
     
     // Ajoute à l'objet référencé par l'attribut "personne" du scope la méthode
@@ -59,7 +64,6 @@ app.controller( "PersonneController", function( $scope )
         // Renvoie la durée convertie en année.
         return Math.round( ageEnMs/(365*24*3600000)) ;
     }
-    
 });
 
 
