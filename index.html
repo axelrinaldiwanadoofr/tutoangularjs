@@ -28,6 +28,10 @@ and open the template in the editor.
                 <input ng-model="personne.nom"/><br>
                 Prénom: 
                 <input ng-model="personne.prenom"/><br>
+                Date de naissance: 
+                <input size="2" ng-model="personne.dateNaissance.jour"/>
+                <input size="2" ng-model="personne.dateNaissance.mois"/>
+                <input size="4" ng-model="personne.dateNaissance.annee"/>                   
             </p>
         </article>
         <script src="js/lib/angular.min.js"></script>
