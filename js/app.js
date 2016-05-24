@@ -9,30 +9,21 @@
 var app = angular.module( 'MonApp', [] ) ;
 
 /*
- * Création du controleur de donnée "PersonneController" qui crée un modèle de données
- * pour une personne dans le scope. 
+ * Création du controleur de donnée "LesPersonnesController" qui crée un modèle de données
+ * pour une collection de personnes stokée dans un tableau au sein du scope. 
  * 
- *  Appel de la méthode "controller" de l'objet référencé par la variable "app" pour créer et enregistrer
- *  le controleur de donnée "PersonneController". Cette méthode est appellée avec deux valeurs argumentaires,
- *  la première est le nom du controlleur que l'on crée et le deuxième est la référence d'une fonction 
- *  anonyme dont le code est donné juste en dessous entre les deux { }. Cette manière de passer une fonction
- *  et son code en valeur argumentaire d'une autre fonction ou méthode est appelée fonction Lambda. JavaScript et
- *  C++ sont les rares langages de programmation autorisant cette manière de coder très puissante.
- *  
- *  La fonction passée en argument sera appelée par AngularJS quand il compilera la directive "ng-controller"
- *  de la balise <article>. Ce dernier transmet, au travers de la variable argumentaire "$scope", 
- *  à la fonction la référence d'un objet appellé "scope" qui définira le modèle de donnée contenant les
- *  information de la personne Paul Meyer.
- *  
- *  La fonction ajoute au scope l'attribut "personne" dans lequel elle copie la référence de l'objet
- *  {id: 1, nom: "Meyer", prenom: "Paul" } créé à la volée au format JSON. Ce dernier possède trois attributs: 
- *  "id" qui contient l'identifiant de la personne, "nom" qui contient le nom de la personne et "prenom" 
- *  qui contient le prénom de la personne.
+ * Le controleur ajoute cette fois au scope l'attribut "lesPersonnes" dans lequel est copiée la référence d'un
+ * tableau dont chaque case référence un objet contenant les données d'une personne.   
  *    
  */
 app.controller( "PersonneController", function( $scope )
 {
-    $scope.personne = {id: 1, nom: "Meyer", prenom: "Paul" } ;
+    $scope.lesPersonnes = [
+        {id: 1, nom: "Meyer", prenom: "Paul" },
+        {id: 2, nom: "Martin", prenom: "Enzo" },
+        {id: 3, nom: "Dupond", prenom: "Pauline" },
+        {id: 4, nom: "Duschmol", prenom: "Robert" }
+    ];
 });
 
 

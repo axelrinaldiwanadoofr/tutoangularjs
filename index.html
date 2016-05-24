@@ -13,22 +13,12 @@ and open the template in the editor.
     </head>
     <body>
         <article ng-controller="PersonneController">
-            <h3>Voici une personne</h3>
-            <p>
-                Identifiant: <strong>{{personne.id}}</strong>
-                <br>
-                Nom: <strong>{{personne.nom}}</strong>
-                <br>
-                Prénom: <strong>{{personne.prenom}}</strong>
-            </p>
-            <h3>Formulaire de mise à jour de cette personne</h3>
-            <p>
-                <strong>Formulaire</strong><br>
-                Nom: 
-                <input ng-model="personne.nom"/><br>
-                Prénom: 
-                <input ng-model="personne.prenom"/><br>
-            </p>
+            <h3>Les personnes</h3>
+            <ul>
+                <li ng-repeat="personne in lesPersonnes">
+                    {{personne.id}} {{personne.prenom}} {{personne.nom}}
+                </li>
+            </ul>        
         </article>
         <script src="js/lib/angular.min.js"></script>
         <script src="js/app.js"></script>
