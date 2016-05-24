@@ -14,9 +14,10 @@ var app = angular.module( 'MonApp', [] ) ;
  * 
  * Le controleur ajoute cette fois au scope l'attribut "lesPersonnes" dans lequel est copiée la référence d'un
  * tableau dont chaque case référence un objet contenant les données d'une personne.   
- *    
+ *
+ * Utilisation d'une forme minimisable d'injection d'argument pour le controleur.    
  */
-app.controller( "PersonneController", function( $scope )
+app.controller( "PersonneController", ["$scope",function( $scope )
 {
     $scope.lesPersonnes = [
         {id: 1, nom: "Meyer", prenom: "Paul" },
@@ -24,6 +25,6 @@ app.controller( "PersonneController", function( $scope )
         {id: 3, nom: "Dupond", prenom: "Pauline" },
         {id: 4, nom: "Duschmol", prenom: "Robert" }
     ];
-});
+}]);
 
 
