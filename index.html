@@ -20,6 +20,11 @@ and open the template in the editor.
                 Nom: <strong>{{personne.nom}}</strong>
                 <br>
                 Prénom: <strong>{{personne.prenom}}</strong>
+                <br>
+                Sexe: 
+                <span ng-show='personne.masculin'><strong>masculin</strong></span>
+                <span ng-hide='personne.masculin'><strong>féminin</strong></span>                
+                
             </p>
             <h3>Formulaire de mise à jour de cette personne</h3>
             <p>
