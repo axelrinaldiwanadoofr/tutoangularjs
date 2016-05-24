@@ -45,6 +45,21 @@ app.controller( "PersonneController", function( $scope )
             annee: 1995
         }        
     } ;
+    
+    // Ajoute à l'objet référencé par l'attribut "personne" du scope la méthode
+    // getAge qui calcule et renvoie l'age de la personne à partir de sa date de naissance
+    $scope.personne.getAge = function()
+    {
+        // Récupère la date de naissance sous la forme d'un objet de type Date
+        var dateNaissance = new Date( this.dateNaissance.annee, this.dateNaissance.mois, this.dateNaissance.jour ) ;
+        
+        // Soustrait la date de naissance à la date du jour et récupère une durée en ms
+        var ageEnMs = Date.now() - dateNaissance ;
+        
+        // Renvoie la durée convertie en année.
+        return Math.round( ageEnMs/(365*24*3600000)) ;
+    }
+    
 });
 
 
