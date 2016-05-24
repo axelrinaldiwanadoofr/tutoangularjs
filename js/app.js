@@ -28,11 +28,18 @@ var app = angular.module( 'MonApp', [] ) ;
  *  {id: 1, nom: "Meyer", prenom: "Paul" } créé à la volée au format JSON. Ce dernier possède trois attributs: 
  *  "id" qui contient l'identifiant de la personne, "nom" qui contient le nom de la personne et "prenom" 
  *  qui contient le prénom de la personne.
+ *  
+ *  Ajout du champ booleen "masculin"
  *    
  */
 app.controller( "PersonneController", function( $scope )
 {
-    $scope.personne = {id: 1, nom: "Meyer", prenom: "Paul" } ;
+    $scope.personne = {
+        id: 1, 
+        nom: "Meyer", 
+        prenom: "Paul",
+        masculin: true 
+    } ;
 });
 
 
