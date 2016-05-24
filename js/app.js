@@ -50,7 +50,7 @@ app.config( ['$routeProvider',function( $routeProvider)
  * tableau dont chaque case référence un objet contenant les données d'une personne.   
  *    
  */
-app.controller( "PersonneController", ["$scope",function( $scope )
+app.controller( "LesPersonnesController", ["$scope",function( $scope )
 {
     $scope.lesPersonnes = [
         {id: 1, nom: "Meyer", prenom: "Paul" },
