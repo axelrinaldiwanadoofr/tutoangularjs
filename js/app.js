@@ -8,6 +8,21 @@
 */
 var app = angular.module( 'MonApp', [] ) ;
 
+
+
+
+/*
+ * Test d'utilisation de WebSQL: 
+ * - ouverture/creation d'une base de données
+ * - creation de la table Personnes( id, nom, prenom ) 
+ * - insertion de quelques occurences
+ */
+
+// Ouvre ou crée la base de données locale de type WEBSQL de nom MaBD
+// version n°1 et d'une taille de 1Mo
+var db = openDatabase( "MaBD", "1", "Ceci est un commentaire", 1000000 ) ;
+
+
 /*
  * Création du controleur de donnée "LesPersonnesController" qui crée un modèle de données
  * pour une collection de personnes stokée dans un tableau au sein du scope. 
