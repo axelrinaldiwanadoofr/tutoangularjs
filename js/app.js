@@ -38,6 +38,11 @@ app.config( ['$routeProvider',function( $routeProvider)
         templateUrl: 'view/vwUnePersonne.html',
         controller: 'PersonneController' });
         
+    // Route pour accéder au formulaire d'une personne frmUnePersonne.html à partir d'un 
+    // lien hypertext sur une personne
+    $routeProvider.when( '/list/personne/edit/:personneId', {
+        templateUrl: 'view/frmUnePersonne.html',
+        controller: 'PersonneController' });
         
     $routeProvider.otherwise( {redirectTo: '/list'} ) ;
 }]);
