@@ -22,6 +22,34 @@ var app = angular.module( 'MonApp', [] ) ;
 // version n°1 et d'une taille de 1Mo
 var db = openDatabase( "MaBD", "1", "Ceci est un commentaire", 1000000 ) ;
 
+if( db )
+{
+    //
+    // Cree la table Personnes
+    //
+    
+    // Requete de creation de la table Personnes
+    var sql_ct = "CREATE TABLE IF NOT EXISTS Personnes( id int, nom text, prenom text )" ;
+    
+    // Ouvre un cycle de transaction dans WEBSQL (Traitement asynchrone)
+    this.db.transaction( function(t) 
+    {
+        // Envoie la requete SQL à WEBSQL
+        t.executeSql( sql_ct, [], 
+            function( results )
+            {
+                // Traitement du résultat en cas de succes
+                console.log( "Table Personnes créée") ;
+            },
+            function( t, error )
+            {
+                // Traitement d'erreur en cas d'echec
+                alert( "Erreur code " + error.code + " " + error.message ) ;
+            }
+        );
+    });                                        
+}
+
 
 /*
  * Création du controleur de donnée "LesPersonnesController" qui crée un modèle de données
