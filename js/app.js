@@ -32,7 +32,7 @@ if( db )
     var sql_ct = "CREATE TABLE IF NOT EXISTS Personnes( id int, nom text, prenom text )" ;
     
     // Ouvre un cycle de transaction dans WEBSQL (Traitement asynchrone)
-    this.db.transaction( function(t) 
+    db.transaction( function(t) 
     {
         // Envoie la requete SQL à WEBSQL
         t.executeSql( sql_ct, [], 
@@ -52,6 +52,7 @@ if( db )
 
 if( db )
 {
+    
     //
     // Insertion de Monsieur Charles DUPOND
     //
@@ -63,7 +64,7 @@ if( db )
     var values = [1, "DUPOND", "Charles"] ;
     
     // Ouvre un cycle de transaction dans WEBSQL (Traitement asynchrone)
-    this.db.transaction( function(t) 
+    db.transaction( function(t) 
     {
         // Envoie la requete SQL à WEBSQL
         t.executeSql( sql_ins, values, 
