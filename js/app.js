@@ -50,6 +50,37 @@ if( db )
     });                                        
 }
 
+if( db )
+{
+    //
+    // Insertion de Monsieur Charles DUPOND
+    //
+    
+    // Requete d'insertion
+    var sql_ins = "INSERT INTO Personnes( id, nom, prenom ) values( ?, ?, ? )" ;
+    
+    // Tableau de valeur pour le data-binding
+    var values = [1, "DUPOND", "Charles"] ;
+    
+    // Ouvre un cycle de transaction dans WEBSQL (Traitement asynchrone)
+    this.db.transaction( function(t) 
+    {
+        // Envoie la requete SQL à WEBSQL
+        t.executeSql( sql_ins, values, 
+            function( results )
+            {
+                // Traitement du résultat en cas de succes
+                console.log( "Insertion effecuée correctement" ) ;
+            },
+            function( t, error )
+            {
+                // Traitement d'erreur en cas d'echec
+                alert( "Erreur code " + error.code + " " + error.message ) ;
+            }
+        );
+    });                                        
+}
+
 
 /*
  * Création du controleur de donnée "LesPersonnesController" qui crée un modèle de données
