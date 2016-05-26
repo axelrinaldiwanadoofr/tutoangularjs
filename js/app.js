@@ -36,7 +36,7 @@ if( db )
     {
         // Envoie la requete SQL à WEBSQL
         t.executeSql( sql_ct, [], 
-            function( results )
+            function( t, results )
             {
                 // Traitement du résultat en cas de succes
                 console.log( "Table Personnes créée") ;
@@ -52,6 +52,49 @@ if( db )
 
 if( db )
 {
+    // 
+    // Compte le nombre de personnes dans la table Personnes
+    //
+    db.transaction( function(t) 
+    {
+        // Envoie la requete SQL à WEBSQL
+        t.executeSql( "select count(*) as nb from Personnes", [], 
+            function( t, results )
+            {
+                // Traitement du résultat en cas de succes
+                // Si le nombre de personne est 0 alors insère un enregistrement 
+                // si non pas.
+                if( results.rows[0].nb == 0 )
+                {
+                    // Requete d'insertion
+                    var sql_ins = "INSERT INTO Personnes( id, nom, prenom ) values( ?, ?, ? )" ;
+
+                    // Tableau de valeur pour le data-binding
+                    var values = [1, "DUPOND", "Charles"] ;
+    
+                    // Envoie la requete SQL à WEBSQL
+                    t.executeSql( sql_ins, values, 
+                        function( t, results )
+                        {
+                            // Traitement du résultat en cas de succes
+                            console.log( "Insertion d'un enregistrement dans Personnes" ) ;
+                        },
+                        function( t, error )
+                        {
+                            // Traitement d'erreur en cas d'echec
+                            alert( "Erreur code " + error.code + " " + error.message ) ;
+                        }
+                    ) ;
+                }
+                else console.log( "La table Personnes contient déjà des données, pas d'insertion effectuée" ) ;
+            },
+            function( t, error )
+            {
+                // Traitement d'erreur en cas d'echec
+                alert( "Erreur code " + error.code + " " + error.message ) ;
+            }
+        );
+    });                                        
     
     //
     // Insertion de Monsieur Charles DUPOND
@@ -68,7 +111,7 @@ if( db )
     {
         // Envoie la requete SQL à WEBSQL
         t.executeSql( sql_ins, values, 
-            function( results )
+            function( t, results )
             {
                 // Traitement du résultat en cas de succes
                 console.log( "Insertion effecuée correctement" ) ;
