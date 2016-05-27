@@ -97,24 +97,53 @@ if( db )
     });                                        
 }    
 
+//
+//Recupération de la liste des personnes: méthode 1
+//
+
+// Crée un tableau pour stocker les personnes
+var lesPersonnes = [] ;
+
+if( db )
+{
+    // 
+    // Recupere la liste des personnes
+    //
+    db.transaction( function(t) 
+    {
+        // Envoie la requete SQL à WEBSQL
+        t.executeSql( "select * from Personnes", [], 
+            function( t, results )
+            {
+                // Copie les références des personnes dans le tableau lesPersonnes
+                // Ici on fait une copie car le tableau results.rows n'est utilisable
+                // directement pour un modèle de donnée.
+                
+                for( var i in results.rows )
+                {
+                    lesPersonnes.push( results.rows[i] ) ;
+                }
+            },
+            function( t, error )
+            {
+                // Traitement d'erreur en cas d'echec
+                alert( "Erreur code " + error.code + " " + error.message ) ;
+            }
+        );
+    });                                        
+}    
+
 
 /*
  * Création du controleur de donnée "LesPersonnesController" qui crée un modèle de données
  * pour une collection de personnes stokée dans un tableau au sein du scope. 
  * 
- * Le controleur ajoute cette fois au scope l'attribut "lesPersonnes" dans lequel est copiée la référence d'un
- * tableau dont chaque case référence un objet contenant les données d'une personne.   
- *
- * Utilisation d'une forme minimisable d'injection d'argument pour le controleur.    
+ * Le controleur ajoute cette fois au scope l'attribut "lesPersonnes" dans lequel 
+ * est copié la référence du tableau lesPersonnes chargé ci-dessus  
  */
 app.controller( "PersonneController", ["$scope",function( $scope )
 {
-    $scope.lesPersonnes = [
-        {id: 1, nom: "Meyer", prenom: "Paul" },
-        {id: 2, nom: "Martin", prenom: "Enzo" },
-        {id: 3, nom: "Dupond", prenom: "Pauline" },
-        {id: 4, nom: "Duschmol", prenom: "Robert" }
-    ];
+    $scope.lesPersonnes = lesPersonnes ;
 }]);
 
 
