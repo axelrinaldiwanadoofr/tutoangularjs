@@ -131,6 +131,9 @@ app.controller( "PersonneController", ["$scope",function( $scope )
                     {
                         $scope.lesPersonnes.push( results.rows[i] ) ;
                     }
+                    
+                    // Demande à rafraichir les vues basées sur ce scope.
+                    $scope.$digest() ;
                 },
                 function( t, error )
                 {
