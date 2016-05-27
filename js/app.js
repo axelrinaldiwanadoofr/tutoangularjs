@@ -119,7 +119,7 @@ if( db )
                 // Ici on fait une copie car le tableau results.rows n'est utilisable
                 // directement pour un modèle de donnée.
                 
-                for( var i in results.rows )
+                for( var i=0 ; i< results.rows.length ; i++ )
                 {
                     lesPersonnes.push( results.rows[i] ) ;
                 }
