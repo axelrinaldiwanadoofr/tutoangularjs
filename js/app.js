@@ -97,41 +97,7 @@ if( db )
     });                                        
 }    
 
-//
-//Recupération de la liste des personnes: méthode 1
-//
 
-// Crée un tableau pour stocker les personnes
-var lesPersonnes = [] ;
-
-if( db )
-{
-    // 
-    // Recupere la liste des personnes
-    //
-    db.transaction( function(t) 
-    {
-        // Envoie la requete SQL à WEBSQL
-        t.executeSql( "select * from Personnes", [], 
-            function( t, results )
-            {
-                // Copie les références des personnes dans le tableau lesPersonnes
-                // Ici on fait une copie car le tableau results.rows n'est utilisable
-                // directement pour un modèle de donnée.
-                
-                for( var i in results.rows )
-                {
-                    lesPersonnes.push( results.rows[i] ) ;
-                }
-            },
-            function( t, error )
-            {
-                // Traitement d'erreur en cas d'echec
-                alert( "Erreur code " + error.code + " " + error.message ) ;
-            }
-        );
-    });                                        
-}    
 
 
 /*
@@ -143,7 +109,37 @@ if( db )
  */
 app.controller( "PersonneController", ["$scope",function( $scope )
 {
-    $scope.lesPersonnes = lesPersonnes ;
+    // Création d'un tableau vide
+    $scope.lesPersonnes = [] ;
+    
+    if( db )
+    {
+        // 
+        // Recupere la liste des personnes
+        //
+        db.transaction( function(t) 
+        {
+            // Envoie la requete SQL à WEBSQL
+            t.executeSql( "select * from Personnes", [], 
+                function( t, results )
+                {
+                    // Copie les références des personnes dans le tableau lesPersonnes
+                    // Ici on fait une copie car le tableau results.rows n'est utilisable
+                    // directement pour un modèle de donnée.
+
+                    for( var i=0; i< results.rows.length; i++ )
+                    {
+                        $scope.lesPersonnes.push( results.rows[i] ) ;
+                    }
+                },
+                function( t, error )
+                {
+                    // Traitement d'erreur en cas d'echec
+                    alert( "Erreur code " + error.code + " " + error.message ) ;
+                }
+            );
+        });                                        
+    }    
 }]);
 
 
