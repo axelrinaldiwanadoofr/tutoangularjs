@@ -90,10 +90,11 @@ app.factory( "webSql", ["$q",function($q)
     
     // Intialsaition sur la BD
     // Cree la table Personnes
-    provider.exec( "CREATE TABLE IF NOT EXISTS Personnes( id int, nom text, prenom text )" ) ;
-    
-    // Insere une personne si la table est vide avec utilisation d'une promise
-    provider.exec( "select count(*) as nb from Personnes", [] ).then( function( results )
+    provider.exec( "CREATE TABLE IF NOT EXISTS Personnes( id int, nom text, prenom text )" ).then( function( results )
+    {
+        // Insere une personne si la table est vide avec utilisation d'une promise
+        return provider.exec( "select count(*) as nb from Personnes", [] ) ;
+    }).then( function( results )
     {
         if( results.rows[0].nb == 0 )
         {
