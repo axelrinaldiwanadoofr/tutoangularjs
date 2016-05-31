@@ -10,8 +10,10 @@ var app = angular.module( 'MonApp', [] ) ;
 
 
 // Enregistre une fabrique au sein d'Angular qui créera et retournera 
-// une instance d'un provider WebSql 
-app.factory( "webSql", [function() 
+// une instance d'un provider WebSql.
+// Ajout par injection de l'argument $q référencant l'objet de gestion
+// des promise pour les traitements asynchrones
+app.factory( "webSql", ["$q",function($q) 
 {
     // Cree un objet vide
     var provider = {} ;
@@ -23,14 +25,15 @@ app.factory( "webSql", [function()
     // Methode exec( sql, bindings, onSuccesFct( provider, results ) )
     // sql: Requete SQL
     // bindings: Tableau de valeurs
-    // onSuccesFct( provider, results ): Référence du callback à exécuter en cas de succes
-    //      provider: Référence du provider
-    //      results: Référence de l'objet contenant le résultat de la requete
-    provider.exec = function( sql, bindings, onSuccesFct )
+    // Renvoie une promise
+    provider.exec = function( sql, bindings )
     {
         // Stocke dans une variable de closure la référence de l'objet servant
         // à appeler la méthode
         var $this = this ;
+
+        // Cree un objet de gestion de traitement asynchrone
+        var defered = $q.defer() ;
         
         // Ouvre un cycle de transaction dans WEBSQL (Traitement asynchrone)
         this.db.transaction( function( transaction ) 
@@ -39,22 +42,33 @@ app.factory( "webSql", [function()
             transaction.executeSql( sql, bindings, 
                 function( transaction, results )
                 {
-                    if( onSuccesFct ) onSuccesFct( $this, results ) ;
+                    // Declenche un traitement de succes
+                    return defered.resolve( results ) ;
                 },
                 function( transaction, error )
                 {
-                    // Traitement d'erreur en cas d'echec
-                    alert( "Erreur code " + error.code + " " + error.message ) ;
+                    // Declenche un traitement d'erreur
+                    return defered.reject( "Error: " + error.code + " " + error.message ) ;
                 }
             );
-        });                                                
+        }); 
+        
+        // Retourne une promise permettant d'ajouter d'autre traitements asynchrone à la suite
+        // de celui-ci.
+        return defered.promise ;
     };
     
     // Execute une requete SQL et place le résultat dans le tableau donné
     // dans l'argument arrayForRows
+    // Retourne une promise 
     provider.select = function( sql, bindings, arrayForRows )
     {
-        this.exec( sql, bindings, function( provider, results )
+        // Lance la requete et recupere une promise
+        var promise1 = this.exec( sql, bindings ) ;
+                
+        // Traitement à l'issue de la promise et génère une deuxième promise pour 
+        // permettre d'autre traitement à la suite
+        var promise2 = promise1.then( function( results )
         {
            if( arrayForRows ) 
            {
@@ -62,8 +76,16 @@ app.factory( "webSql", [function()
                 {
                     arrayForRows.push( results.rows[i] ) ;
                 }               
+                
            }
+           return results ;
+        }, function( error )
+        {
+            console.log( error ) ;
+            return error ;
         });
+        
+        return promise2 ;
     };
     
     // Intialsaition sur la BD
