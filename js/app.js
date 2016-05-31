@@ -91,15 +91,19 @@ app.factory( "webSql", ["$q",function($q)
     // Intialsaition sur la BD
     // Cree la table Personnes
     provider.exec( "CREATE TABLE IF NOT EXISTS Personnes( id int, nom text, prenom text )" ) ;
-    // Insere une personne si la table est vide
-    provider.exec( "select count(*) as nb from Personnes", [], function( provider, results)
+    
+    // Insere une personne si la table est vide avec utilisation d'une promise
+    provider.exec( "select count(*) as nb from Personnes", [] ).then( function( results )
     {
         if( results.rows[0].nb == 0 )
         {
             // Insere la personne si la table Personnes ne contient pas d'occurence
-            provider.exec( "INSERT INTO Personnes( id, nom, prenom ) values( ?, ?, ? )", [1, "DUPOND", "Charles"] ) ;
+            return provider.exec( "INSERT INTO Personnes( id, nom, prenom ) values( ?, ?, ? )", [1, "DUPOND", "Charles"] ) ;
         }
-    }) ;
+    }).then( function( results )
+    {
+        if( results ) alert( results.rowsAffected + " enregsitrement inseré") ; 
+    });
     
     // Retourne l'objet singleton
     return provider ;
