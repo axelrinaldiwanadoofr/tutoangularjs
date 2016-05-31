@@ -50,6 +50,22 @@ app.factory( "webSql", [function()
         });                                                
     };
     
+    // Execute une requete SQL et place le résultat dans le tableau donné
+    // dans l'argument arrayForRows
+    provider.select = function( sql, bindings, arrayForRows )
+    {
+        this.exec( sql, bindings, function( provider, results )
+        {
+           if( arrayForRows ) 
+           {
+                for( var i=0; i< results.rows.length; i++ )
+                {
+                    arrayForRows.push( results.rows[i] ) ;
+                }               
+           }
+        });
+    };
+    
     // Intialsaition sur la BD
     // Cree la table Personnes
     provider.exec( "CREATE TABLE IF NOT EXISTS Personnes( id int, nom text, prenom text )" ) ;
@@ -85,20 +101,7 @@ app.controller( "PersonneController", ["$scope","webSql",function( $scope, webSq
     // 
     // Recupere la liste des personnes
     //
-    webSql.exec( "select * from Personnes", [], function( provider, results )
-    {
-        // Copie les références des personnes dans le tableau lesPersonnes
-        // Ici on fait une copie car le tableau results.rows n'est utilisable
-        // directement pour un modèle de donnée.
-
-        for( var i=0; i< results.rows.length; i++ )
-        {
-            $scope.lesPersonnes.push( results.rows[i] ) ;
-        }
-        
-        // Rafraichi la vue
-        $scope.$digest() ;
-    }) ;
+    webSql.select( "select * from Personnes", [], $scope.lesPersonnes ) ;
 }]);
 
 
