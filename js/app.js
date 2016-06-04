@@ -28,3 +28,12 @@ b.nom = "MARTIN" ;
 b.prenom = "Henris" ;
 b.age = 50 ;
 
+// Ajout dynamique d'une méthode à l'objet référencé par la variable a
+a.affiche = function()
+{
+    console.log( this.prenom + " " + this.nom + " agé de " + this.age + " ans." ) ;
+};
+
+// Utilisation de la méthode avec l'objet référencé par la variable a
+a.affiche() ;
+
