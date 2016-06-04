@@ -13,4 +13,9 @@ var h = p ;
 // Accès à l'attribut prenom du même objet au travers de la variable h
 h.prenom = "Alain" ;
 
-
+// Création d'un objet au format JSON
+var a = {
+    nom: "SCHMITT",
+    prenom: "Léa",
+    age: 33
+};
