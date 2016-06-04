@@ -19,3 +19,12 @@ var a = {
     prenom: "Léa",
     age: 33
 };
+
+// Instanciation de la classe Object
+var b = new Object() ;
+
+// Ajout dynamique d'attributs à l'objet
+b.nom = "MARTIN" ;
+b.prenom = "Henris" ;
+b.age = 50 ;
+
