@@ -7,4 +7,10 @@ p.nom = "MEYER" ;
 p.prenom = "Paul" ;
 p.age = 24 ;
 
+// Copie de la référence de l'objet contenue de la variable p à la variable h 
+var h = p ;
+
+// Accès à l'attribut prenom du même objet au travers de la variable h
+h.prenom = "Alain" ;
+
 
