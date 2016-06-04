@@ -37,3 +37,10 @@ a.affiche = function()
 // Utilisation de la méthode avec l'objet référencé par la variable a
 a.affiche() ;
 
+// Copie de la référence de la méthode affiche dans l'attribut affiche pour 
+// l'objet référencé par la variable b
+b.affiche = a.affiche ;
+
+b.affiche() ;
+
+
