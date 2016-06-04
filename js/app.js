@@ -43,4 +43,11 @@ b.affiche = a.affiche ;
 
 b.affiche() ;
 
+// Ajout dynamique d'une méthode à l'objet référencé par la variable p
+p.affiche = function()
+{
+    console.log( this.prenom + " " + this.nom + " agé de " + this.age + " ans." ) ;
+};
+
+p.affiche() ;
 
