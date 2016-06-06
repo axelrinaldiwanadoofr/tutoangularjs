@@ -38,9 +38,30 @@ function Patineur( nom, prenom, age, meilleurScore )
 // Création d'une instance du prototype de Personne pour le prototype de Patineur
 Patineur.prototype = new Personne ;
 
+// Ajout d'une nouvelle méthodeà la classe Patineur
+Patineur.prototype.setPersonalBestScore = function( score )
+{
+    this.meilleurScore = score ;
+} ;
+
+// Redefinition de la méthode affiche()
+Patineur.prototype.affiche = function()
+{
+    // Appel de la méthode de la classe mère
+    Personne.prototype.affiche.call( this ) ;
+    
+    // Traitement particulier
+    console.log( "Personal best score: " + this.meilleurScore ) ;
+};
+
 var p2 = new Patineur( "ITO", "Midori", 46, 65 ) ;
 
 p2.affiche() ;
 
+var p3 = new Patineur( "FERNANDEZ" , "Javier", 25 ) ;
 
+p3.affiche() ;
 
+p3.setPersonalBestScore( 314.93 ) ;
+
+p3.affiche() ;

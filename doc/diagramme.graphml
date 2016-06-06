@@ -100,10 +100,10 @@ Personne( nom, prenom, age )
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="88.0" x="381.0" y="187.0"/>
+          <y:Geometry height="16.0" width="122.0" x="225.0" y="402.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="71.875" x="8.0625" y="-1.3505859375">"constructor"<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="71.875" x="25.0625" y="-1.3505859375">"constructor"<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -118,10 +118,10 @@ Personne( nom, prenom, age )
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="16.0" width="88.0" x="381.0" y="171.0"/>
+          <y:Geometry height="16.0" width="122.0" x="225.0" y="386.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="47.875" x="20.0625" y="-1.3505859375">"affiche"<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="47.875" x="37.0625" y="-1.3505859375">"affiche"<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -253,7 +253,7 @@ meilleurScore: 65<y:LabelModel>
       <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="166.99999999999997" width="295.0" x="555.0" y="213.00000000000006"/>
+          <y:Geometry height="166.99999999999997" width="295.0" x="555.0" y="360.00000000000006"/>
           <y:Fill color="#99CC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="151.01171875" modelName="custom" textColor="#000000" visible="true" width="286.134765625" x="4.4326171875" y="7.994140625">::Function
@@ -276,7 +276,119 @@ function Patineur( nom, prenom, age, meilleurScore )
         </y:ShapeNode>
       </data>
     </node>
-    <edge id="e0" source="n3" target="n4">
+    <node id="n13">
+      <data key="d4"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="107.0" width="128.0" x="-224.5" y="267.0"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="92.20703125" modelName="custom" textColor="#000000" visible="true" width="120.73046875" x="3.634765625" y="7.396484375">::Patineur
+
+nom: "FERNANDEZ"
+prenom: "Javier"
+age: 25
+meilleurScore: 314.93<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n14">
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="55.0" x="-384.0" y="267.0"/>
+          <y:Fill color="#CCFFCC" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="17.34765625" x="18.826171875" y="5.6494140625">p3<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle3d"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n15">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="158.99999999999997" width="358.33333333333326" x="555.0" y="190.99999999999994"/>
+          <y:Fill color="#99CC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="151.01171875" modelName="custom" textColor="#000000" visible="true" width="329.658203125" x="14.337565104166629" y="3.994140625">::Function
+
+affiche = function()
+{
+    // Appel de la méthode de la classe mère
+    Personne.prototype.affiche.call( this ) ;
+    
+    // Traitement particulier
+    console.log( "Personal best score: " + this.meilleurScore ) ;
+};<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle3d"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n16">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="166.99999999999997" width="295.0" x="200.0" y="494.0"/>
+          <y:Fill color="#99CC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="151.01171875" modelName="custom" textColor="#000000" visible="true" width="286.134765625" x="4.4326171875" y="7.994140625">::Function
+
+function Patineur( nom, prenom, age, meilleurScore )
+{
+    // Appel du constructeur de la classe mère
+    Personne.call( this, nom, prenom, age ) ;
+    
+    // Attribut supplémentaire
+    this.meilleurScore = meilleurScore ;
+}<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle3d"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="n17">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="16.0" width="122.0" x="225.0" y="418.0"/>
+          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="131.248046875" x="-4.6240234375" y="-1.3505859375">"setPersonalBestScore"<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <edge id="e0" source="n1" target="n0">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -287,7 +399,7 @@ function Patineur( nom, prenom, age, meilleurScore )
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e1" source="n5" target="n6">
+    <edge id="e1" source="n8" target="n7">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -298,29 +410,7 @@ function Patineur( nom, prenom, age, meilleurScore )
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e2" source="n1" target="n0">
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e3" source="n8" target="n7">
-      <data key="d9"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e4" source="n7" target="n3">
+    <edge id="e2" source="n7" target="n3">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -339,7 +429,7 @@ function Patineur( nom, prenom, age, meilleurScore )
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e5" source="n9" target="n10">
+    <edge id="e3" source="n9" target="n10">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -350,7 +440,7 @@ function Patineur( nom, prenom, age, meilleurScore )
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e6" source="n10" target="n2">
+    <edge id="e4" source="n10" target="n2">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -361,7 +451,7 @@ function Patineur( nom, prenom, age, meilleurScore )
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e7" source="n11" target="n6">
+    <edge id="e5" source="n11" target="n6">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -372,7 +462,7 @@ function Patineur( nom, prenom, age, meilleurScore )
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e8" source="n4" target="n12">
+    <edge id="e6" source="n4" target="n12">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -383,7 +473,7 @@ function Patineur( nom, prenom, age, meilleurScore )
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e9" source="n0" target="n9">
+    <edge id="e7" source="n0" target="n9">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -402,7 +492,7 @@ function Patineur( nom, prenom, age, meilleurScore )
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e10" source="n3" target="n9">
+    <edge id="e8" source="n3" target="n9">
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -417,6 +507,69 @@ function Patineur( nom, prenom, age, meilleurScore )
             </y:ModelParameter>
             <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e9" source="n14" target="n13">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e10" source="n13" target="n3">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="54.033203125" x="136.20243290889138" y="-38.08274655861544">prototype<y:LabelModel>
+              <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/>
+            </y:ModelParameter>
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e11" source="n3" target="n5">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e12" source="n5" target="n15">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e13" source="n17" target="n16">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
