@@ -1,18 +1,4 @@
 
-// Création d'un objet anonyme (Object) au format JSON
-var a = {
-    nom: "SCHMITT",
-    prenom: "Léa",
-    age: 33
-};
-
-// Ajout dynamique d'une méthode à l'objet référencé par la variable a
-a.affiche = function()
-{
-    console.log( this.prenom + " " + this.nom + " agé de " + this.age + " ans." ) ;
-};
-
-a.affiche() ;
 
 // Création de la classe Personne
 
@@ -31,19 +17,30 @@ Personne.prototype.affiche = function()
 };
 
 // Creation d'une instance de Personne
-var p1 = new Personne( "BROWNING", "Kurt", 50 ) ;
+var p1 = new Personne( "MEYER", "Paul", 60 ) ;
 
 // Appel de la méthode affiche pour l'objet référencé par p1
 p1.affiche() ;
 
-// Creation d'une autre instance de Personne
-var p2 = new Personne( "ITO", "Midori", 46 ) ;
+// Construction de la classe Patineur classe par héritage de la classe Personne
 
-// Appel de la méthode affiche pour l'objet référencé par p2
+// Constructeur
+function Patineur( nom, prenom, age, meilleurScore )
+{
+    // Appel du constructeur de la classe mère
+    Personne.call( this, nom, prenom, age ) ;
+    
+    // Attribut supplémentaire
+    this.meilleurScore = meilleurScore ;
+}
+
+// Héritage
+// Création d'une instance du prototype de Personne pour le prototype de Patineur
+Patineur.prototype = new Personne ;
+
+var p2 = new Patineur( "ITO", "Midori", 46, 65 ) ;
+
 p2.affiche() ;
 
 
-// Appel de la méthode affiche de la classe Personne
-// a partir de l'objet de type Object référencé par a
-// avec la méthode call de l'objet méthode
-Personne.prototype.affiche.call( a ) ;
+
