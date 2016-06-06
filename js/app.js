@@ -51,3 +51,23 @@ p.affiche = function()
 
 p.affiche() ;
 
+// Tableaux : objet de type Array
+
+// Crée un tableau vide
+var t1 = [] ; // Equivalent à var t1 = new Array() ;
+
+// Ajout de valeurs
+t1[0] = 12 ;
+t1[1] = 23.4 ;
+t1[2] = "toto" ;
+t1[5] = "titi" ;
+ 
+// Création avec format JSON
+var t2 = [13,15.6,"tutu",,"tata"] ;
+
+// Parcours par comptage
+for( var i=0 ; i<t2.length ; i++ ) console.log( t2[i] ) ;
+
+// Parcours par récupération des indices
+for( var i in t2 ) console.log( t2[i] ) ;
+
