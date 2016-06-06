@@ -162,11 +162,12 @@ function()
           <y:Geometry height="107.0" width="128.0" x="-224.5" y="130.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="77.505859375" modelName="custom" textColor="#000000" visible="true" width="92.546875" x="17.7265625" y="14.7470703125">::Patineur
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="92.20703125" modelName="custom" textColor="#000000" visible="true" width="97.375" x="15.3125" y="7.396484375">::Patineur
 
 nom: "ITO"
 prenom: "Midori"
-age: 46<y:LabelModel>
+age: 46
+meilleurScore: 65<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
