@@ -71,3 +71,29 @@ for( var i=0 ; i<t2.length ; i++ ) console.log( t2[i] ) ;
 // Parcours par récupération des indices
 for( var i in t2 ) console.log( t2[i] ) ;
 
+// Tableaux associatifs
+var t3 = [] ;
+
+// Ajout d'attributs ou de cases
+t3["prenom"] = "Brian" ;
+t3["nom"] = "JOUBERT" ;
+t3["age"] = 28 ;
+
+t3.age++ ;
+
+// Parcours par récupération des indices
+for( var i in t3 ) console.log( i + " : " + t3[i] ) ;
+
+// Appel d'une méthode d'un autre objet pour cet objet
+b.affiche.call( t3 ) ;
+
+// Ajout d'une méthode
+t3.affiche = b.affiche ;
+
+// Appel d'une méthode
+t3.affiche() ;
+
+// Objet ou tableau
+b["age"]++ ;
+
+b.affiche() ;
