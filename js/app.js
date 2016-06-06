@@ -1,32 +1,10 @@
 
-// Création d'un objet vide et copie de sa référence dans la variable p
-var p = {} ;
-
-// Ajout dynamique d'attributs à l'objet
-p.nom = "MEYER" ;
-p.prenom = "Paul" ;
-p.age = 24 ;
-
-// Copie de la référence de l'objet contenue de la variable p à la variable h 
-var h = p ;
-
-// Accès à l'attribut prenom du même objet au travers de la variable h
-h.prenom = "Alain" ;
-
-// Création d'un objet au format JSON
+// Création d'un objet anonyme (Object) au format JSON
 var a = {
     nom: "SCHMITT",
     prenom: "Léa",
     age: 33
 };
-
-// Instanciation de la classe Object
-var b = new Object() ;
-
-// Ajout dynamique d'attributs à l'objet
-b.nom = "MARTIN" ;
-b.prenom = "Henris" ;
-b.age = 50 ;
 
 // Ajout dynamique d'une méthode à l'objet référencé par la variable a
 a.affiche = function()
@@ -34,66 +12,38 @@ a.affiche = function()
     console.log( this.prenom + " " + this.nom + " agé de " + this.age + " ans." ) ;
 };
 
-// Utilisation de la méthode avec l'objet référencé par la variable a
 a.affiche() ;
 
-// Copie de la référence de la méthode affiche dans l'attribut affiche pour 
-// l'objet référencé par la variable b
-b.affiche = a.affiche ;
+// Création de la classe Personne
 
-b.affiche() ;
-
-// Ajout dynamique d'une méthode à l'objet référencé par la variable p
-p.affiche = function()
+// Constructeur Personne
+function Personne( nom, prenom, age )
 {
-    console.log( this.prenom + " " + this.nom + " agé de " + this.age + " ans." ) ;
+    this.nom = nom ;
+    this.prenom = prenom ;
+    this.age = age ;
+}
+
+// Ajout de méthode dans Personne.prototype
+Personne.prototype.affiche = function()
+{
+    console.log( this.prenom + " " + this.nom + " agé de " + this.age + " ans." ) ;    
 };
 
-p.affiche() ;
+// Creation d'une instance de Personne
+var p1 = new Personne( "BROWNING", "Kurt", 50 ) ;
 
-// Tableaux : objet de type Array
+// Appel de la méthode affiche pour l'objet référencé par p1
+p1.affiche() ;
 
-// Crée un tableau vide
-var t1 = [] ; // Equivalent à var t1 = new Array() ;
+// Creation d'une autre instance de Personne
+var p2 = new Personne( "ITO", "Midori", 46 ) ;
 
-// Ajout de valeurs
-t1[0] = 12 ;
-t1[1] = 23.4 ;
-t1[2] = "toto" ;
-t1[5] = "titi" ;
- 
-// Création avec format JSON
-var t2 = [13,15.6,"tutu",,"tata"] ;
+// Appel de la méthode affiche pour l'objet référencé par p2
+p2.affiche() ;
 
-// Parcours par comptage
-for( var i=0 ; i<t2.length ; i++ ) console.log( t2[i] ) ;
 
-// Parcours par récupération des indices
-for( var i in t2 ) console.log( t2[i] ) ;
-
-// Tableaux associatifs
-var t3 = [] ;
-
-// Ajout d'attributs ou de cases
-t3["prenom"] = "Brian" ;
-t3["nom"] = "JOUBERT" ;
-t3["age"] = 28 ;
-
-t3.age++ ;
-
-// Parcours par récupération des indices
-for( var i in t3 ) console.log( i + " : " + t3[i] ) ;
-
-// Appel d'une méthode d'un autre objet pour cet objet
-b.affiche.call( t3 ) ;
-
-// Ajout d'une méthode
-t3.affiche = b.affiche ;
-
-// Appel d'une méthode
-t3.affiche() ;
-
-// Objet ou tableau
-b["age"]++ ;
-
-b.affiche() ;
+// Appel de la méthode affiche de la classe Personne
+// a partir de l'objet de type Object référencé par a
+// avec la méthode call de l'objet méthode
+Personne.prototype.affiche.call( a ) ;
