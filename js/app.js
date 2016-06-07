@@ -22,7 +22,7 @@ var c = {} ;
 
 // Etend l'objet nouvellement crée avec les attriibuts et méthode 
 // de l'objet référencé par b
-for( var n in b ) c[n] = b[n] ;
+extend( c, b ) ;
 
 // Met a jour le nouvel objet
 c.nom = "DUPOND" ;
@@ -31,6 +31,15 @@ c.prenom = "Thomas" ;
 // Appelle la méthode affiche de l'objet référencé par c
 c.affiche() ;
 
+
+// Fonction d'héritage pour un objet
+function extend( fils, pere )
+{
+    for( var n in pere ) 
+    {
+        if( !fils[n] ) fils[n] = pere[n] ;
+    }
+}
 
 
     
