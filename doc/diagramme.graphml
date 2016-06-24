@@ -17,7 +17,7 @@
     <node id="n0">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="107.0" width="141.0" x="322.0" y="62.0"/>
+          <y:Geometry height="107.0" width="141.0" x="-85.0" y="-250.0"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="92.20703125" modelName="custom" textColor="#000000" visible="true" width="78.0390625" x="31.48046875" y="7.396484375">::Object
@@ -39,7 +39,7 @@ age: 24<y:LabelModel>
     <node id="n1">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="55.0" x="41.0" y="52.0"/>
+          <y:Geometry height="30.0" width="55.0" x="-366.0" y="-260.0"/>
           <y:Fill color="#CCFFCC" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="10.673828125" x="22.1630859375" y="5.6494140625">p<y:LabelModel>
@@ -56,7 +56,7 @@ age: 24<y:LabelModel>
     <node id="n2">
       <data key="d6">
         <y:ShapeNode>
-          <y:Geometry height="30.0" width="55.0" x="41.0" y="127.0"/>
+          <y:Geometry height="30.0" width="55.0" x="-366.0" y="-185.0"/>
           <y:Fill color="#CCFFCC" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="10.673828125" x="22.1630859375" y="5.6494140625">h<y:LabelModel>
@@ -74,9 +74,9 @@ age: 24<y:LabelModel>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="229.0" y="67.0"/>
-            <y:Point x="285.0" y="67.0"/>
-            <y:Point x="312.0" y="77.0"/>
+            <y:Point x="-178.0" y="-245.0"/>
+            <y:Point x="-122.0" y="-245.0"/>
+            <y:Point x="-95.0" y="-235.0"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
@@ -85,7 +85,6 @@ age: 24<y:LabelModel>
       </data>
     </edge>
     <edge id="e1" source="n2" target="n0">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
