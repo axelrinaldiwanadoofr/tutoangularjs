@@ -231,7 +231,9 @@ function WebSqlPrd( $q, config )
 
 // Definit la registerWebSqlPrdPrdModule permettant d'enregistrer un nouveau module
 // dont le nom est donné dans l'argument moduleName au sein d'AngularJs
-function registerWebSqlPrdModule( moduleName, window, angular )
+// L'argument providerName contient le nom du provider qui devra être utilisé
+// dans l'injection d'argument
+function registerWebSqlPrdModule( moduleName, providerName, window, angular )
 {
     // Créé et enrgistre une instance de module dans Angular
     var webSqlPrdModule = angular.module( moduleName, [] ) ;
@@ -240,7 +242,7 @@ function registerWebSqlPrdModule( moduleName, window, angular )
     // une instance d'un provider WebSqlPrd.
     // Ajout par injection de l'argument $q référencant l'objet de gestion
     // des promise pour les traitements asynchrones
-    webSqlPrdModule.provider( "webSqlPrd", [function WebSqlPrdProvider() 
+    webSqlPrdModule.provider( providerName, [function WebSqlPrdProvider() 
     {
         var config = {
             dbName: "",
@@ -276,4 +278,4 @@ function registerWebSqlPrdModule( moduleName, window, angular )
 
 // Execute la fonction d'enregistrement du module dans Angular avec le
 // nom webSqlPrdModule
-registerWebSqlPrdModule( "webSqlPrdModule", window, window.angular ) ;
+registerWebSqlPrdModule( "webSqlPrdModule", "sqlPrd", window, window.angular ) ;

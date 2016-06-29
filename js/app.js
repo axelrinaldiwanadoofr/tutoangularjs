@@ -11,11 +11,11 @@ var app = angular.module( 'MonApp', ["webSqlPrdModule"] ) ;
 // Configuration du provider injecté webSqlPrdProvider servant de provider pour le provider webSql. 
 // La configuration est enregistrée dans la variable de closure config déclaré dans la fabrique 
 // du provider de provider webSql
-app.config( ["webSqlPrdProvider", function( webSqlPrdProvider)
+app.config( ["sqlPrdProvider", function( sqlPrdProvider)
 {   
     // Appel de la méthode config du provider de provider webSql pour enregistrer une configuration
     // qui sera utilisée au moment de l'appel de la fabrique référencée par l'argument $get
-    webSqlPrdProvider.config( "dbPersonnes", "1", "Ma BD", 1000000, function( provider )
+    sqlPrdProvider.config( "dbPersonnes", "1", "Ma BD", 1000000, function( provider )
     {
         // Intialsaition sur la BD
         // Cree la table Personnes
@@ -44,10 +44,10 @@ app.config( ["webSqlPrdProvider", function( webSqlPrdProvider)
  * Le controleur ajoute cette fois au scope l'attribut "lesPersonnes" dans lequel 
  * est copié la référence du tableau lesPersonnes chargé ci-dessus  
  * 
- * Ajout par injection de l'argument webSql faisant référence au provider WebSql
+ * Ajout par injection de l'argument sqlPrd faisant référence au provider WebSql
  * 
  */
-app.controller( "PersonneController", ["$scope","webSqlPrd",function( $scope, webSqlPrd )
+app.controller( "PersonneController", ["$scope","sqlPrd",function( $scope, sqlPrd )
 {
     // Création d'un tableau vide
     $scope.lesPersonnes = [] ;
@@ -55,7 +55,7 @@ app.controller( "PersonneController", ["$scope","webSqlPrd",function( $scope, we
     // 
     // Recupere la liste des personnes
     //
-    webSqlPrd.select( "select * from Personnes", [], $scope.lesPersonnes ) ;
+    sqlPrd.select( "select * from Personnes", [], $scope.lesPersonnes ) ;
 }]);
 
 
