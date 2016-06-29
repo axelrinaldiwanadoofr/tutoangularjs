@@ -7,8 +7,9 @@
 * balise <html> du code HTML) et renvoie sa référence que l'on copie dans la variable app
 * 
 * Demande à charger le module "ngRoute" de routage de page
+* ainsi que le module webSqlPrdModule pour l'acces a WebSql
 */
-var app = angular.module( 'MonApp', ["ngRoute"] ) ;
+var app = angular.module( 'MonApp', ["ngRoute","webSqlPrdModule"] ) ;
 
 /*
  * 
@@ -47,22 +48,54 @@ app.config( ['$routeProvider',function( $routeProvider)
     $routeProvider.otherwise( {redirectTo: '/list'} ) ;
 }]);
 
+// Configuration du provider injecté webSqlPrdProvider servant de provider pour le provider webSql. 
+// La configuration est enregistrée dans la variable de closure config déclaré dans la fabrique 
+// du provider de provider webSql
+app.config( ["webSqlPrdProvider", function( webSqlPrdProvider)
+{   
+    // Appel de la méthode config du provider de provider webSql pour enregistrer une configuration
+    // qui sera utilisée au moment de l'appel de la fabrique référencée par l'argument $get
+    webSqlPrdProvider.config( "dbPersonnes", "1", "Ma BD", 1000000, function( provider )
+    {
+        // Intialsaition sur la BD
+        // Cree la table Personnes
+        provider.createTable( "Personnes", {id:"int", nom:"nom", prenom:"text"}).then( function()
+        {
+            return provider.select( "select count(*) as nb from Personnes", [], [] ) ;            
+        }).then( function( rows )
+        {
+            if( rows[0].nb == 0 )
+            {
+                // Insere la personne si la table Personnes ne contient pas d'occurence
+                return provider.insert( "Personnes", {id:1, nom: "DUPOND", prenom: "Charles"} ) ;
+            }            
+        });
+
+        // Retourne l'objet singleton
+        return provider ;
+    });
+}]);
+
+
 /*
  * Création du controleur de donnée "LesPersonnesController" qui crée un modèle de données
  * pour une collection de personnes stokée dans un tableau au sein du scope. 
  * 
- * Le controleur ajoute cette fois au scope l'attribut "lesPersonnes" dans lequel est copiée la référence d'un
- * tableau dont chaque case référence un objet contenant les données d'une personne.   
- *    
+ * Le controleur ajoute cette fois au scope l'attribut "lesPersonnes" dans lequel 
+ * est copié la référence du tableau lesPersonnes chargé ci-dessus  
+ * 
+ * Ajout par injection de l'argument webSql faisant référence au provider WebSql
+ * 
  */
-app.controller( "LesPersonnesController", ["$scope",function( $scope )
+app.controller( "LesPersonnesController", ["$scope","webSqlPrd",function( $scope, webSqlPrd )
 {
-    $scope.lesPersonnes = [
-        {id: 1, nom: "Meyer", prenom: "Paul" },
-        {id: 2, nom: "Martin", prenom: "Enzo" },
-        {id: 3, nom: "Dupond", prenom: "Pauline" },
-        {id: 4, nom: "Duschmol", prenom: "Robert" }
-    ];
+    // Création d'un tableau vide
+    $scope.lesPersonnes = [] ;
+    
+    // 
+    // Recupere la liste des personnes
+    //
+    webSqlPrd.select( "select * from Personnes", [], $scope.lesPersonnes ) ;
 }]);
 
 /*
