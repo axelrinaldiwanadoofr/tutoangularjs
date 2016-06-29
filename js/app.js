@@ -107,10 +107,14 @@ app.controller( "LesPersonnesController", ["$scope","webSqlPrd",function( $scope
  *  Le controlleur ajoute au scope l'attribut "personne" dans lequel elle copie la référence de l'objet contenant
  *  les données de la personne sur laquelle l'utilisateur a cliquée.  
  */
-app.controller( "PersonneController", ["$scope","$routeParams",function($scope, $routeParams)
+app.controller( "PersonneController", ["$scope","$routeParams","webSqlPrd",function($scope, $routeParams, webSqlPrd)
 {
     // Ajoute au nouveau scope fils l'attribut "personne" avec la référence de la personne
     // stockée dans la case du tableau "lesPersonnes" sélectionnée
-    $scope.personne = $scope.lesPersonnes[$routeParams.personneId-1] ;
+    // Cherche les données de la personne
+    webSqlPrd.select( "select * from personnes where id=?", [$routeParams.personneId] ).then( function( results )
+    {
+        $scope.personne = results.rows[0] ;
+    }) ;
 }]);
 
