@@ -30,7 +30,10 @@ app.config( ['$routeProvider',function( $routeProvider)
     // Route pour accéder à la liste des personnes. Utilise la vue stockée dans le fichier vwListeDePersonnes.html qui
     // viendra en remplacement de la directive ng-view
     $routeProvider.when( '/list', {
-        templateUrl: 'view/vwListeDePersonnes.html'
+        templateUrl: 'view/vwListeDePersonnes.html',
+        // Déplace ici la référence au controller afin que ce dernier soit reexécuté au retour de navigation
+        // vers la liste
+        controller: "LesPersonnesController" 
         });
         
     // Route pour accéder à la vue d'une personne vwUnePersonne.html à partir d'un 
@@ -122,6 +125,7 @@ app.controller( "PersonneController", ["$scope","$routeParams","sqlPrd",function
     {
         return sqlPrd.update( "Personnes", ["id"], this.personne ).then( function( results )
         {
+            // Revient à la page précédente
             history.back() ;
         }) ;
     }
