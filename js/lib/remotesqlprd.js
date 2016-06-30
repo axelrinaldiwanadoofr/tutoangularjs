@@ -24,7 +24,7 @@ function RemoteSqlPrd( $http, config )
     if( config.remoteScript ) this.remoteScript = config.remoteScript ;
     else this.remoteScript = "php/sqlexec.php" ;
     this.dbName = config.dbName ;
-    if( dbId ) this.dbId = config.dbId ;
+    if( config.dbId ) this.dbId = config.dbId ;
     else this.dbId = "" ;
     this.$http = $http ;
     
@@ -323,7 +323,7 @@ function registerRemoteSqlPrdModule( moduleName, providerName, window, angular )
         {
             // Cree et retourne une instance du provider. config fait référence à la variable
             // locale config définie au dessus. Cette dernière est conservée par closure
-            return new RemoteSqlPrd( $q, config ) ;
+            return new RemoteSqlPrd( $http, config ) ;
         }] ;
     }]) ;
 }
