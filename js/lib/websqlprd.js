@@ -6,30 +6,26 @@
  * @author Axel Rinaldi 01/04/2016
  ***********************************************************************************************/
 
-/**
-  * @class WebSqlPrd 
-  * @constructor WebSqlPrd
-  * @name WebSqlPrd.openDatabase
-  * @param {objet} $q Q object for defered promise system 
-  * @param {string} dbName Database name
-  * @param {string} dbVersion Database version
-  * @param {string} dbComment Database comment
-  * @param {int} dbSize Database size in byte
-  * @return {type} object with database connector in db attribute
-  * @description
-  * Open or create a WebSQL database
-  */
-
-function WebSqlPrd( $q, dbName, dbVersion, dbComment, dbSize )
+/*
+ * @class Class WebSqlPrd: provider pour acceder à WebSqlPrd
+ * @constructor
+ * @param {Factory $q de Angular} $q 
+ * @param {Object} config: Objet contenant les parametres d'ouverture de la BD
+ *      dbName: Nom de la BD
+ *      dbVersion: Version de la BD
+ *      dbComment: Commentaire
+ *      dbSise: Taille en octet de la BD
+ *      initFct: Référence d'une fonction prenant comme argument l'instance de WebSqlPrd pour initialisation.
+ *                          
+ */
+function WebSqlPrd( $q, config )
 {
-    this.dbName = dbName ;
-    this.dbVersion = dbVersion ;
-    this.dbSize = dbSize ;
+    // Ouvre ou crée la base de données locale de type WEBSQL.
+    this.db = openDatabase( config.dbName, config.dbVersion, config.dbComment, config.dbSize ) ;    
     this.$q = $q ;
     
-    // Ouvre ou crée la base de données locale de type WEBSQL dont
-    // le nom et la version sont donnés par dbName et dbVersion
-    this.db = openDatabase( dbName, dbVersion, dbComment, dbSize ) ;
+    // Si initFct contient une référence de fonction d'initialisation alors lance la fonction
+    if( config.initFct ) config.initFct( this ) ;
 }
 
 // La classe WebSqlPrd hérite de la classe SqlPrd
@@ -207,27 +203,6 @@ WebSqlPrd.prototype.delete = function( tableName, pk, row )
     return this.exec( sql, bindings ) ;
 } ;
             
-/*
- * @class Class WebSqlPrd: provider pour acceder à WebSqlPrd
- * @constructor
- * @param {Factory $q de Angular} $q 
- * @param {Object} config: Objet contenant les parametres d'ouverture de la BD
- *      dbName: Nom de la BD
- *      dbVersion: Version de la BD
- *      dbComment: Commentaire
- *      dbSise: Taille en octet de la BD
- *      initFct: Référence d'une fonction prenant comme argument l'instance de WebSqlPrd pour initialisation.
- *                          
- */
-function WebSqlPrd( $q, config )
-{
-    // Ouvre ou crée la base de données locale de type WEBSQL.
-    this.db = openDatabase( config.dbName, config.dbVersion, config.dbComment, config.dbSize ) ;    
-    this.$q = $q ;
-    
-    // Si initFct contient une référence de fonction d'initialisation alors lance la fonction
-    if( config.initFct ) config.initFct( this ) ;
-}
 
 // Definit la registerWebSqlPrdPrdModule permettant d'enregistrer un nouveau module
 // dont le nom est donné dans l'argument moduleName au sein d'AngularJs
