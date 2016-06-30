@@ -51,11 +51,11 @@ app.config( ['$routeProvider',function( $routeProvider)
 // Configuration du provider injecté webSqlPrdProvider servant de provider pour le provider webSql. 
 // La configuration est enregistrée dans la variable de closure config déclaré dans la fabrique 
 // du provider de provider webSql
-app.config( ["webSqlPrdProvider", function( webSqlPrdProvider)
+app.config( ["sqlPrdProvider", function( sqlPrdProvider)
 {   
     // Appel de la méthode config du provider de provider webSql pour enregistrer une configuration
     // qui sera utilisée au moment de l'appel de la fabrique référencée par l'argument $get
-    webSqlPrdProvider.config( "dbPersonnes", "1", "Ma BD", 1000000, function( provider )
+    sqlPrdProvider.config( "dbPersonnes", "1", "Ma BD", 1000000, function( provider )
     {
         // Intialsaition sur la BD
         // Cree la table Personnes
@@ -84,10 +84,10 @@ app.config( ["webSqlPrdProvider", function( webSqlPrdProvider)
  * Le controleur ajoute cette fois au scope l'attribut "lesPersonnes" dans lequel 
  * est copié la référence du tableau lesPersonnes chargé ci-dessus  
  * 
- * Ajout par injection de l'argument webSql faisant référence au provider WebSql
+ * Ajout par injection de l'argument sqlPrd faisant référence au provider WebSql
  * 
  */
-app.controller( "LesPersonnesController", ["$scope","webSqlPrd",function( $scope, webSqlPrd )
+app.controller( "LesPersonnesController", ["$scope","sqlPrd",function( $scope, sqlPrd )
 {
     // Création d'un tableau vide
     $scope.lesPersonnes = [] ;
@@ -95,7 +95,7 @@ app.controller( "LesPersonnesController", ["$scope","webSqlPrd",function( $scope
     // 
     // Recupere la liste des personnes
     //
-    webSqlPrd.select( "select * from Personnes", [], $scope.lesPersonnes ) ;
+    sqlPrd.select( "select * from Personnes", [], $scope.lesPersonnes ) ;
 }]);
 
 /*
@@ -107,12 +107,12 @@ app.controller( "LesPersonnesController", ["$scope","webSqlPrd",function( $scope
  *  Le controlleur ajoute au scope l'attribut "personne" dans lequel elle copie la référence de l'objet contenant
  *  les données de la personne sur laquelle l'utilisateur a cliquée.  
  */
-app.controller( "PersonneController", ["$scope","$routeParams","webSqlPrd",function($scope, $routeParams, webSqlPrd)
+app.controller( "PersonneController", ["$scope","$routeParams","sqlPrd",function($scope, $routeParams, sqlPrd)
 {
     // Ajoute au nouveau scope fils l'attribut "personne" avec la référence de la personne
     // stockée dans la case du tableau "lesPersonnes" sélectionnée
     // Cherche les données de la personne
-    webSqlPrd.select( "select * from personnes where id=?", [$routeParams.personneId] ).then( function( results )
+    sqlPrd.select( "select * from personnes where id=?", [$routeParams.personneId] ).then( function( results )
     {
         $scope.personne = results.rows[0] ;
     }) ;
