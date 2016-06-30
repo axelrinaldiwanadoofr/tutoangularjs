@@ -9,48 +9,10 @@
 * Demande à charger le module "ngRoute" de routage de page
 * ainsi que le module webSqlPrdModule pour l'acces a WebSql
 */
-var app = angular.module( 'MonApp', ["ngRoute","webSqlPrdModule"] ) ;
+//var app = angular.module( 'MonApp', ["webSqlPrdModule"] ) ;
+var app = angular.module( 'MonApp', ["remoteSqlPrdModule"] ) ;
 
 /*
- * 
- * L'appel de la méthode "config" de AngularJS permet de paramétrer le service de routage des pages d'AngularJS
- * L'argument $routeProvider injecté dans la fonction contient la référence à ce service. Ce dernier possède la 
- * méthode "when" permettant de créer des entrés dans le système de routage de page (Ce système permets de gérer
- * les liens hyper-text qui sont placés dans le code HTML). Chaque entrée contient un chemin de navigation et un objet
- * dont les attributs renseignent le système de routage sur les taches à réaliser. 
- * 
- * La première entrée correspond à la liste des personne et charge de manière asynchrone le contenu du fichier
- * "vwListeDePersonnes.html" qui viendra en remplacement du contenu de la balise <article> contenant la directive
- * "ng-view"
- * 
- *  L'appel de la méthode "otherwise" permet de préciser quelle vue est utilisée par défaut.
- */
-app.config( ['$routeProvider',function( $routeProvider)
-{
-    // Route pour accéder à la liste des personnes. Utilise la vue stockée dans le fichier vwListeDePersonnes.html qui
-    // viendra en remplacement de la directive ng-view
-    $routeProvider.when( '/list', {
-        templateUrl: 'view/vwListeDePersonnes.html',
-        // Déplace ici la référence au controller afin que ce dernier soit reexécuté au retour de navigation
-        // vers la liste
-        controller: "LesPersonnesController" 
-        });
-        
-    // Route pour accéder à la vue d'une personne vwUnePersonne.html à partir d'un 
-    // lien hypertext sur la liste
-    $routeProvider.when( '/list/personne/:personneId', {
-        templateUrl: 'view/vwUnePersonne.html',
-        controller: 'PersonneController' });
-        
-    // Route pour accéder au formulaire d'une personne frmUnePersonne.html à partir d'un 
-    // lien hypertext sur une personne
-    $routeProvider.when( '/list/personne/edit/:personneId', {
-        templateUrl: 'view/frmUnePersonne.html',
-        controller: 'PersonneController' });
-        
-    $routeProvider.otherwise( {redirectTo: '/list'} ) ;
-}]);
-
 // Configuration du provider injecté webSqlPrdProvider servant de provider pour le provider webSql. 
 // La configuration est enregistrée dans la variable de closure config déclaré dans la fabrique 
 // du provider de provider webSql
@@ -68,6 +30,39 @@ app.config( ["sqlPrdProvider", function( sqlPrdProvider)
         }).then( function( results )
         {
             if( results.rows[0].nb == 0 )
+            {
+                // Insere la personne si la table Personnes ne contient pas d'occurence
+                return provider.insert( "Personnes", {id:1, nom: "DUPOND", prenom: "Charles"} ) ;
+            }            
+        });
+
+        // Retourne l'objet singleton
+        return provider ;
+    });
+}]);
+*/
+
+
+// Configuration du provider injecté webSqlPrdProvider servant de provider pour le provider webSql. 
+// La configuration est enregistrée dans la variable de closure config déclaré dans la fabrique 
+// du provider de provider webSql
+app.config( ["sqlPrdProvider", function( sqlPrdProvider)
+{   
+    // Appel de la méthode config du provider de provider webSql pour enregistrer une configuration
+    // qui sera utilisée au moment de l'appel de la fabrique référencée par l'argument $get
+    // On ne précise rien pour l'URL car nous déjà dans le répertoire www du WEB service
+    // Le nom de la base de données est ici "tpreplication"
+    // Les paramètres de connection à cette dernière stockés dans le fichier config.php du WEB service
+    sqlPrdProvider.config( "", "tpreplication", "1", null, function( provider )
+    {
+        // Intialsaition sur la BD
+        // Cree la table Personnes
+        provider.createTable( "Personnes", {id:"int", nom:"nom", prenom:"text"}).then( function()
+        {
+            return provider.select( "select count(*) as nb from Personnes", [], [] ) ;            
+        }).then( function( rows )
+        {
+            if( rows[0].nb == 0 )
             {
                 // Insere la personne si la table Personnes ne contient pas d'occurence
                 return provider.insert( "Personnes", {id:1, nom: "DUPOND", prenom: "Charles"} ) ;
