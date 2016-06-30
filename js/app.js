@@ -161,5 +161,17 @@ app.controller( "PersonneController", ["$scope","$routeParams","sqlPrd",function
             });
         }
     }
+
+    // Méthode remove pour supprimer une personne    
+    $scope.remove = function()
+    {
+        // Envoie une requete de suppression de la personne courante
+        return sqlPrd.delete( "Personnes", ["id"], this.personne ).then( function(results)
+        {
+            // Retour à la page précédente
+            history.back() ;
+        })
+    }
+    
 }]);
 
