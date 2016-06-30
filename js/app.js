@@ -116,5 +116,15 @@ app.controller( "PersonneController", ["$scope","$routeParams","sqlPrd",function
     {
         $scope.personne = results.rows[0] ;
     }) ;
+
+    // Méthode save pour enregistrer les modification d'une personne dans la base de donnée    
+    $scope.save = function()
+    {
+        return sqlPrd.update( "Personnes", ["id"], this.personne ).then( function( results )
+        {
+            history.back() ;
+        }) ;
+    }
+    
 }]);
 
