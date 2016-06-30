@@ -65,9 +65,9 @@ app.config( ["sqlPrdProvider", function( sqlPrdProvider)
         provider.createTable( "Personnes", {id:"int", nom:"nom", prenom:"text"}).then( function()
         {
             return provider.select( "select count(*) as nb from Personnes", [], [] ) ;            
-        }).then( function( rows )
+        }).then( function( results )
         {
-            if( rows[0].nb == 0 )
+            if( results.rows[0].nb == 0 )
             {
                 // Insere la personne si la table Personnes ne contient pas d'occurence
                 return provider.insert( "Personnes", {id:1, nom: "DUPOND", prenom: "Charles"} ) ;
@@ -112,23 +112,54 @@ app.controller( "LesPersonnesController", ["$scope","sqlPrd",function( $scope, s
  */
 app.controller( "PersonneController", ["$scope","$routeParams","sqlPrd",function($scope, $routeParams, sqlPrd)
 {
-    // Ajoute au nouveau scope fils l'attribut "personne" avec la référence de la personne
-    // stockée dans la case du tableau "lesPersonnes" sélectionnée
-    // Cherche les données de la personne
-    sqlPrd.select( "select * from personnes where id=?", [$routeParams.personneId] ).then( function( results )
+    // Vérifie si l'identiant de personne demandé correspond à celui d'une personne existante
+    // ou bien à une nouvelle personne
+    if( $routeParams.personneId != "new" )
     {
-        $scope.personne = results.rows[0] ;
-    }) ;
+        // Cherche les données de la personne
+        sqlPrd.select( "select * from personnes where id=?", [$routeParams.personneId] ).then( function( results )
+        {
+            $scope.personne = results.rows[0] ;
+        }) ;
+    }
+    else
+    {
+        // Cree une nouvelle personne et initialise ses valeurs par défaut
+        $scope.personne = {id: "new", nom: "", prenom: "" } ;
+    }
 
     // Méthode save pour enregistrer les modification d'une personne dans la base de donnée    
     $scope.save = function()
     {
-        return sqlPrd.update( "Personnes", ["id"], this.personne ).then( function( results )
+        // Vérifie s'il s'agit d'une modification apportée à une personne existante
+        // ou bien de la création d'une nouvelle personne
+        if( this.personne.id != "new" ) 
         {
-            // Revient à la page précédente
-            history.back() ;
-        }) ;
+            // Cas d'un personne existante, réalise un UPDATE
+            return sqlPrd.update( "Personnes", ["id"], this.personne ).then( function( results )
+            {
+                // Revient à la page précédente
+                history.back() ;
+            }) ;
+        }
+        else 
+        {
+            // Cas de l'insertion d'une nouvelle personne.
+            // Recupère l'identifiant le plus grand parmis les personnes existantes 
+            // afin d'en créé un nouveau pour la nouvelle personne
+            return sqlPrd.select( "select max(id) as maxid from personnes" ).then( function( results )
+            {
+                // Met à jour dans le modèle l'identifiant de la nouvelle personne
+                // par incrémentation de l'identifiant le plus grand.
+                $scope.personne.id = parseInt(results.rows[0].maxid) + 1 ;
+                // Insert la nouvelle personne dans la BD
+                return sqlPrd.insert( "Personnes", $scope.personne ) ;
+            }).then( function(results)
+            {
+                // Revient à la page précédente
+                history.back() ;
+            });
+        }
     }
-    
 }]);
 
