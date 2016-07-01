@@ -150,7 +150,7 @@ RemoteSqlPrd.prototype.createTable = function( tableName, fields )
         }
     },function(error)
     {
-        console.error( error ) ;
+        console.error( error.message ) ;
     });
 } ;
 
@@ -181,14 +181,14 @@ RemoteSqlPrd.prototype.select = function( sql, values, array )
                 {
                     array.push(results.data.rows[i]) ;
                 }                                
-                return results ;
+                return results.data ;
             }
             else return results.data ;
         }
         else alert( results.data ) ;         
     },function(error)
     {
-        console.error( error ) ;
+        console.error( error.message ) ;
     });
 };
 
@@ -218,7 +218,7 @@ RemoteSqlPrd.prototype.update = function( tableName, pk, row )
         else alert( response.data ) ;
     },function(error)
     {
-        console.error( error ) ;
+        console.error( "RemoteSqlPrd.prototype.update: " + error.message + " on " + url ) ;
     });
 };
 
@@ -248,7 +248,7 @@ RemoteSqlPrd.prototype.delete = function( tableName, pk, row )
         else alert( response.data ) ;
     },function(error)
     {
-        console.error( error ) ;
+        console.error( error.message ) ;
     });
 };
 
@@ -277,7 +277,7 @@ RemoteSqlPrd.prototype.insert = function( tableName, row )
         else alert( response.data ) ;
     },function(error)
     {
-        console.error( error ) ;
+        console.error( error.message ) ;
     });
 };
 
