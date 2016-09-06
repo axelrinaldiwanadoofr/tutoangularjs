@@ -2,9 +2,9 @@
 $config = array() ;
 
 // Connection a la base de donnee
-$config["db_host"] = "localhost" ;
-$config["db_usr"] = "root" ;
-$config["db_pwd"] = "" ;
+$config["db_host"] = "lcsalsacggroot.mysql.db" ;
+$config["db_usr"] = "csalsacggroot" ;
+$config["db_pwd"] = "Lcs123Bd" ;
 
 $_ENV["config"] = $config ;
 ?>

@@ -185,7 +185,7 @@ RemoteSqlPrd.prototype.select = function( sql, values, array )
             }
             else return results.data ;
         }
-        else alert( results.data ) ;         
+        else alert( results.data.error ) ;         
     },function(error)
     {
         console.error( error.message ) ;

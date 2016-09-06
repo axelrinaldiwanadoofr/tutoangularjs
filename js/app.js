@@ -62,7 +62,7 @@ app.config( ["sqlPrdProvider", function( sqlPrdProvider)
     // On ne précise rien pour l'URL car nous déjà dans le répertoire www du WEB service
     // Le nom de la base de données est ici "tpreplication"
     // Les paramètres de connection à cette dernière stockés dans le fichier config.php du WEB service
-    sqlPrdProvider.config( "", "tpreplication", "1", null, function( provider )
+    sqlPrdProvider.config( "", "lcsalsacggroot", "1", null, function( provider )
     {
         // Intialsaition sur la BD
         // Cree la table Personnes
