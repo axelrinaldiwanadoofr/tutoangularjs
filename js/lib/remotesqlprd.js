@@ -146,7 +146,7 @@ RemoteSqlPrd.prototype.createTable = function( tableName, fields )
         }
         else
         {
-            alert( response.data ) ;
+            alert( response.data.error ) ;
         }
     },function(error)
     {
@@ -245,7 +245,7 @@ RemoteSqlPrd.prototype.delete = function( tableName, pk, row )
             response.data.url = url ;
             return response.data ;
         }
-        else alert( response.data ) ;
+        else alert( response.data.error ) ;
     },function(error)
     {
         console.error( error.message ) ;
@@ -274,7 +274,7 @@ RemoteSqlPrd.prototype.insert = function( tableName, row )
             response.data.url = url ;
             return response.data ;
         }
-        else alert( response.data ) ;
+        else alert( response.data.error ) ;
     },function(error)
     {
         console.error( error.message ) ;
