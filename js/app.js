@@ -66,15 +66,15 @@ app.config( ["sqlPrdProvider", function( sqlPrdProvider)
     {
         // Intialsaition sur la BD
         // Cree la table Personnes
-        provider.createTable( "Personnes", {id:"int", nom:"nom", prenom:"text"}).then( function()
+        provider.createTable( "personnes", {id:"int", nom:"nom", prenom:"text"}).then( function()
         {
-            return provider.select( "select count(*) as nb from Personnes", [], [] ) ;            
+            return provider.select( "select count(*) as nb from personnes", [], [] ) ;            
         }).then( function( results )
         {
             if( results.rows[0].nb == 0 )
             {
                 // Insere la personne si la table Personnes ne contient pas d'occurence
-                return provider.insert( "Personnes", {id:1, nom: "DUPOND", prenom: "Charles"} ) ;
+                return provider.insert( "personnes", {id:1, nom: "DUPOND", prenom: "Charles"} ) ;
             }            
         });
 
@@ -102,7 +102,7 @@ app.controller( "LesPersonnesController", ["$scope","sqlPrd",function( $scope, s
     // 
     // Recupere la liste des personnes
     //
-    sqlPrd.select( "select * from Personnes", [], $scope.lesPersonnes ) ;
+    sqlPrd.select( "select * from personnes", [], $scope.lesPersonnes ) ;
 }]);
 
 /*
@@ -140,7 +140,7 @@ app.controller( "PersonneController", ["$scope","$routeParams","sqlPrd",function
         if( this.personne.id != "new" ) 
         {
             // Cas d'un personne existante, réalise un UPDATE
-            return sqlPrd.update( "Personnes", ["id"], this.personne ).then( function( results )
+            return sqlPrd.update( "personnes", ["id"], this.personne ).then( function( results )
             {
                 // Revient à la page précédente
                 history.back() ;
@@ -157,7 +157,7 @@ app.controller( "PersonneController", ["$scope","$routeParams","sqlPrd",function
                 // par incrémentation de l'identifiant le plus grand.
                 $scope.personne.id = parseInt(results.rows[0].maxid) + 1 ;
                 // Insert la nouvelle personne dans la BD
-                return sqlPrd.insert( "Personnes", $scope.personne ) ;
+                return sqlPrd.insert( "personnes", $scope.personne ) ;
             }).then( function(results)
             {
                 // Revient à la page précédente
@@ -170,7 +170,7 @@ app.controller( "PersonneController", ["$scope","$routeParams","sqlPrd",function
     $scope.remove = function()
     {
         // Envoie une requete de suppression de la personne courante
-        return sqlPrd.delete( "Personnes", ["id"], this.personne ).then( function(results)
+        return sqlPrd.delete( "personnes", ["id"], this.personne ).then( function(results)
         {
             // Retour à la page précédente
             history.back() ;
