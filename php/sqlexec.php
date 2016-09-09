@@ -1,5 +1,6 @@
 <?php
     header('Content-Type: text/html; charset=UTF-8') ;
+    header('Access-Control-Allow-Origin: *') ;
 
     require_once( "config.php") ;
 
