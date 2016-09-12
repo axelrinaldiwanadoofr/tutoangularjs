@@ -16,7 +16,7 @@ var app = angular.module( 'MonApp', [] ) ;
  * tableau dont chaque case référence un objet contenant les données d'une personne.   
  *    
  */
-app.controller( "PersonneController", function( $scope )
+app.controller( "LesPersonnesController", function( $scope )
 {
     $scope.lesPersonnes = [
         {id: 1, nom: "Meyer", prenom: "Paul" },
