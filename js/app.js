@@ -107,7 +107,7 @@ if( db )
  * Le controleur ajoute cette fois au scope l'attribut "lesPersonnes" dans lequel 
  * est copié la référence du tableau lesPersonnes chargé ci-dessus  
  */
-app.controller( "PersonneController", ["$scope",function( $scope )
+app.controller( "LesPersonnesController", ["$scope",function( $scope )
 {
     // Création d'un tableau vide
     $scope.lesPersonnes = [] ;
