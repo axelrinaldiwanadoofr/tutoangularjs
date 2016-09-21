@@ -12,6 +12,7 @@ and open the template in the editor.
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
+<<<<<<< HEAD
         <article ng-controller="PersonneController">
             <h3>Voici une personne</h3>
             <p>
@@ -42,6 +43,15 @@ and open the template in the editor.
                 Masculin: 
                 <input type='checkbox' ng-model="personne.masculin"/>                                
             </p>
+=======
+        <article ng-controller="LesPersonnesController">
+            <h3>Les personnes</h3>
+            <ul>
+                <li ng-repeat="personne in lesPersonnes">
+                    {{personne.id}} {{personne.prenom}} {{personne.nom}}
+                </li>
+            </ul>        
+>>>>>>> remotes/tuto/P201_Renomage_du_controlleur_liste_de_personnes
         </article>
         <script src="js/lib/angular.min.js"></script>
         <script src="js/app.js"></script>
